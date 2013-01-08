@@ -1,0 +1,130 @@
+form,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,p {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+strong {
+    color: #FF6600;
+    font-weight: 600;
+}
+
+
+/*复选框*/
+.fs-checkbox {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	overflow: hidden;
+	background-image: url(../115/img/checkbox.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	cursor: default;
+	*display: inline;
+	*zoom: 1;
+}
+
+.checked {
+	background-position: -20px 0;
+}
+
+.fs-container {
+	margin-top: 10px;
+	min-width: 760px;
+}
+
+.fs-input-append {
+	margin-top: -6px;
+}
+
+.ft-form-date {
+	margin-bottom: 0px;
+	height: 30px;
+}
+
+.ft-buddy-list {
+	min-height: 500px;
+}
+
+.login-box .checkbox {
+	margin-left: 2px;
+	padding-left: 2px;
+}
+
+.login-box .btn {
+	width: 45%;
+}
+
+.btn span {
+	margin-left: 5px;
+}
+
+.fs-icon-upload {
+	background-position: -183px -340px;
+}
+
+.btn-medium {
+	width: 110px;
+}
+
+.fs-btn-download .caret {
+	margin-right: -22px;
+}
+
+.fs-icon-createfile {
+	background-position: -7px -419px;
+}
+
+.fs-icon-download {
+	background-position: -106px -418px;
+}
+
+.fs-btn-createfile span {
+	margin-left: 20px;
+}
+
+.fs-icon-download,.fs-icon-createfile {
+	background-image: url("../baidu/img/btn_icon.gif");
+	display: block;
+	height: 21px;
+	left: 10px;
+	position: absolute;
+	top: 3px;
+	width: 21px;
+}
+
+.fs-icon-upload,.icon-download,.icon-creat-file,.icon-clear-file,.icon-more-sfile,.icon-share,.icon-copy,.icon-share-cancle,.icon-dump,.icon-share-sina,.icon-play-music,.icon-reduction,.icon-tomyram,.icon-update,.icon-window
+	{
+	top: 3px;
+	left: 10px;
+	position: absolute;
+	display: block;
+	height: 20px;
+	width: 20px;
+	background-image: url('../baidu/img/btn_icon.gif');
+}
+
+
+/* register.jsp + login.jsp   */
+.fs-controls-chkbox {
+	text-align: left;
+}
+
+.fs-verify-code a {
+	vertical-align: bottom;
+	margin-top: 6px;
+	text-decoration: underline;
+}
+
+/*
+  覆盖bootstrap默认的样式
+*/
+.container-fluid {
+	padding-right: 20px;
+	padding-left: 0px;
+}
+
+[class*="span"] {
+	float: left;
+	margin-left: 20px;
+}

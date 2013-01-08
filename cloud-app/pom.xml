@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.facetime.cloud</groupId>
+		<artifactId>cloud</artifactId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>cloud-app</artifactId>
+	<name>cloud-app</name>
+	<packaging>war</packaging>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.facetime</groupId>
+				<artifactId>facetime-default-dependency</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.facetime</groupId>
+				<artifactId>facetime-web-dependency</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.facetime.cloud</groupId>
+			<artifactId>cloud-data</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.facetime</groupId>
+			<artifactId>facetime-spring</artifactId>
+			<version>${facetime-version}</version>
+		</dependency>
+		<!-- facetime web dependency -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+		</dependency>
+		<!-- other dependency -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.patchca</groupId>
+			<artifactId>patchca</artifactId>
+			<version>0.5.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/../../facetime-dependency/facetime-default-dependency/lib/patchca-0.5.0.jar</systemPath>
+		</dependency>
+	</dependencies>
+	<build>
+
+		<finalName>app</finalName>
+		<outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/classes
+		</outputDirectory>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</testResource>
+			<testResource>
+				<filtering>true</filtering>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${project.basedir}/target/classes</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>7.1.6.v20100715</version>
+				<configuration>
+					<classesDirectory>${project.basedir}/src/main/webapp/WEB-INF/classes</classesDirectory>
+					<webAppSourceDirectory>${project.basedir}/src/main/webapp</webAppSourceDirectory>
+					<webDefaultXml>${project.basedir}/src/main/webapp/WEB-INF/classes/webdefault.xml</webDefaultXml>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<stopKey>stop</stopKey>
+					<stopPort>5591</stopPort>
+					<webAppConfig>
+						<contextPath>/app</contextPath>
+						<defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>
+					</webAppConfig>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>8081</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

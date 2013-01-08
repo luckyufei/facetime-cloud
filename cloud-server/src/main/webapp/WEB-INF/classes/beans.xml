@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!-- This is the first time I config svn successed! -->
+	<context:annotation-config />
+	<aop:aspectj-autoproxy />
+	<context:property-placeholder location="classpath:jdbc.properties" />
+	<context:component-scan base-package="com.facetime.spring, com.facetime.cloud.server">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClass}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialSize" value="3" />
+		<property name="maxIdle" value="8" />
+		<property name="maxActive" value="5" />
+	</bean>
+
+	<bean id="namingStrategy" class="com.facetime.spring.support.NamingStrategy"></bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<!--data source -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- domain entity -->
+		<property name="packagesToScan">
+			<list>
+				<value>com.facetime.cloud.data.entity</value>
+			</list>
+		</property>
+		<property name="namingStrategy" ref="namingStrategy"></property>
+		<!-- hibernate properties -->
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=${hibernate.dialect}
+				hibernate.show_sql=false
+				hibernate.format_sql=false
+				hibernate.hbm2ddl.auto=${hibernate.hbm2ddl.auto}
+			</value>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="defaultDao" class="com.facetime.spring.dao.DaoImpl"></bean>
+	<bean id="defaultLogic" class="com.facetime.spring.logic.LogicImpl"></bean>
+	<bean id="remoteLogic" class="com.facetime.spring.logic.EmptyRemoteLogic"></bean>
+
+	<!-- <bean id="compass" class="org.compass.spring.LocalCompassBean"> <property 
+		name="classMappings"> <list> <value>com.shop.domain.product.ProductInfo</value> 
+		<value>com.shop.domain.product.Brand</value> <value>com.shop.domain.product.ProductStyle</value> 
+		<value>com.shop.domain.product.ProductType</value> </list> </property> <property 
+		name="compassSettings"> <props> <prop key="compass.engine.analyzer.default.type">net.paoding.analysis.analyzer.PaodingAnalyzer</prop> 
+		<prop key="compass.engine.connection">file://d:/index</prop> 在内存中建立索引 <prop 
+		key="compass.engine.connection">ram://index</prop> <prop key="compass.engine.highlighter.default.formatter.simple.pre"><![CDATA[<font 
+		color='red'>]]></prop> <prop key="compass.engine.highlighter.default.formatter.simple.post"><![CDATA[</font>]]></prop> 
+		<prop key="compass.transaction.factory">org.compass.spring.transaction.SpringSyncTransactionFactory 
+		</prop> </props> </property> <property name="transactionManager" ref="transactionManager" 
+		/> </bean> 自动完成 索引的添加/更新/删除操作 <bean id="compassGps" class="org.compass.gps.impl.SingleCompassGps" 
+		init-method="start" destroy-method="stop"> <property name="compass" ref="compass" 
+		/> <property name="gpsDevices"> <list> 设置hibernate驱动 <bean class="org.compass.gps.device.hibernate.dep.Hibernate3GpsDevice"> 
+		<property name="name" value="hibernateDevice" /> <property name="sessionFactory" 
+		ref="sessionFactory" /> <property name="mirrorDataChanges" value="true" /> 
+		</bean> </list> </property> </bean> -->
+	<!-- 国际化的消息资源文件 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<!-- 在web环境中一定要定位到classpath 否则默认到当前web应用下找 -->
+				<value>classpath:messages</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="cacheSeconds" value="60" />
+	</bean>
+</beans>

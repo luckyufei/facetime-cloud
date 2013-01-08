@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+#mdl-upload {
+    height: 430px;
+    margin-bottom: auto;
+    width: 750px;
+    overflow: hidden;
+}
+#mdl-upload .modal-footer {
+    bottom: 0;
+    position: absolute;
+    width: 95%;
+}
+
+#mdl-upload table th{
+	border-top: 1px solid #DDD;
+}
+
+#mdl-upload .modal-body .caret {
+    height: 7px;
+}
+
+#mdl-upload .dropdown-menu {
+    min-width: 132px;
+}
+#mdl-upload .well-small > span{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 5px;
+}
+
+#mdl-upload .modal-body .btn-group{
+	display: inline-block;
+	margin-left: 5px;
+}
+
+#mdl-upload table{
+	color: #999999;
+    font-size: 14px;
+}

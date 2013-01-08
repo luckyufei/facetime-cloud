@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>百度帐号注册</title>
+<link type="text/css" rel="stylesheet" href="../baidu/css/global.css?v=20121108">
+<link type="text/css" rel="stylesheet" href="../baidu/css/reg_page.css?v=20121108">
+<link rel="stylesheet" type="text/css" href="../baidu/css/uni_login.css?t=20121119">
+</head>
+<body>
+ <div class="mod-header grid-96">
+  <div class="logo">
+   <a href="http://www.baidu.com"><img alt="baidu" src="https://passport.baidu.com/img/logo.gif"></a>
+  </div>
+ </div>
+ <div class="mod-bread clearfix">
+  <div class="grid-96">
+   <div class="bread-left">填写注册信息</div>
+   <div class="bread-right">
+    已有帐号？<a id="login" href="javascript:;">马上登录</a>
+   </div>
+  </div>
+ </div>
+ <div class="mod-regcontent grid-96" id="content_reg">
+  <form class="pass_reg_form" id="pass_reg_form_0" form_number="0" action="https://passport.baidu.com/v2/api/?reg"
+   target="pass_reg_iframe_0" method="post" style="">
+   <!-- email -->
+   <p class="pass_reg_p pass_reg_p_email grid-96" id="pass_reg_p_email_0">
+    <label class="pass_reg_label pass_reg_label_email"  for="pass_reg_email_0">邮箱</label>
+    <input class="pass_reg_input pass_reg_input_email pass_reg_input_focus"  type="text" name="email" autocomplete="off">
+    <span class="pass_reg_err pass_reg_err_email" style="display:none"></span>
+    <span class="pass_valid_right" style="display: none"></span>
+    <span class="pass_reg_des pass_reg_des_email reg_info" style="display: block;">请输入常用邮箱，通过验证后可用于登录和找回密码</span>
+   </p>
+   <!-- username -->
+   <p class="pass_reg_p pass_reg_p_username grid-96" id="pass_reg_p_username_0">
+    <label class="pass_reg_label pass_reg_label_username" id="pass_reg_label_username_0" for="pass_reg_username_0">用户名</label><input
+     class="pass_reg_input pass_reg_input_username" id="pass_reg_username_0" type="text" name="username"
+     autocomplete="off" tabindex="2"><span class="pass_reg_err pass_reg_err_username"
+     id="pass_reg_username_0_err"></span><span class="pass_valid_right" style="display: none"></span><span
+     class="pass_reg_des pass_reg_des_username" id="pass_reg_username_0_des" style="display: none;">不超过7个汉字，或14个字符（半角数字、半角字母或下划线），且不能是纯数字</span>
+   </p>
+   <ul class="pass_reg_suggestusernameul" id="pass_reg_suggestusernameul_0" style="display: none;">
+    <li class="pass_reg_suggestusernameli_title">从下面选择一个</li>
+    <li class="pass_reg_suggestusernameli" id="pass_reg_suggestusernameli_0_0" style="display: none"><input
+     type="radio" class="pass_reg_suggestuserradio" name="pass_reg_suggestuserradio_0"
+     id="pass_reg_suggestuserradio_0_0" style="display: none;"><span class="pass_reg_suggestuserlabel"
+     id="pass_reg_suggestuserlabel_0_0"></span></li>
+    <li class="pass_reg_suggestusernameli" id="pass_reg_suggestusernameli_1_0" style="display: none"><input
+     type="radio" class="pass_reg_suggestuserradio" name="pass_reg_suggestuserradio_0"
+     id="pass_reg_suggestuserradio_1_0" style="display: none;"><span class="pass_reg_suggestuserlabel"
+     id="pass_reg_suggestuserlabel_1_0"></span></li>
+    <li class="pass_reg_suggestusernameli" id="pass_reg_suggestusernameli_2_0" style="display: none"><input
+     type="radio" class="pass_reg_suggestuserradio" name="pass_reg_suggestuserradio_0"
+     id="pass_reg_suggestuserradio_2_0" style="display: none;"><span class="pass_reg_suggestuserlabel"
+     id="pass_reg_suggestuserlabel_2_0"></span></li>
+   </ul>
+   <p class="pass_reg_p pass_reg_p_password grid-96" id="pass_reg_p_password_0">
+    <label class="pass_reg_label pass_reg_label_password" id="pass_reg_label_password_0" for="pass_reg_password_0">密码</label><input
+     class="pass_reg_input pass_reg_input_password" id="pass_reg_password_0" type="password" name="loginpass"
+     autocomplete="off" tabindex="3"><span class="pass_reg_err pass_reg_err_password"
+     id="pass_reg_password_0_err"></span><span class="pass_valid_right" style="display: none"></span><span
+     class="pass_reg_des pass_reg_des_password" id="pass_reg_password_0_des" style="display: none;">密码长度6~14位，字母区分大小写</span>
+   </p>
+   <p class="pass_reg_p pass_reg_p_repassword grid-96" id="pass_reg_p_repassword_0">
+    <label class="pass_reg_label pass_reg_label_repassword" id="pass_reg_label_repassword_0" for="pass_reg_repassword_0">确认密码</label><input
+     class="pass_reg_input pass_reg_input_repassword" id="pass_reg_repassword_0" type="password" name="verifypass"
+     autocomplete="off" tabindex="4"><span class="pass_reg_err pass_reg_err_repassword"
+     id="pass_reg_repassword_0_err"></span><span class="pass_valid_right" style="display: none"></span><span
+     class="pass_reg_des pass_reg_des_repassword" id="pass_reg_repassword_0_des" style="display: none;"></span>
+   </p>
+   <p class="pass_reg_p pass_reg_p_verifycode" id="pass_reg_p_verifycode_0">
+    <label class="pass_reg_label pass_reg_label_verifycode" id="pass_reg_label_verifycode_0" for="pass_reg_verifycode_0">验证码</label><input
+     class="pass_reg_input pass_reg_input_verifycode" id="pass_reg_verifycode_0" type="text" name="verifycode"
+     autocomplete="off" tabindex="5"><span class="pass_reg_err pass_reg_err_verifycode"
+     id="pass_reg_verifycode_0_err"></span><span class="pass_reg_des pass_reg_des_verifycode"
+     id="pass_reg_verifycode_0_des" style="display: none;">请输入图片中的字符，不区分大小写</span>
+   </p>
+   <p class="pass_reg_p pass_reg_p_img_verifycode" id="pass_reg_p_img_verifycode_0">
+    <img
+     src="https://passport.baidu.com/cgi-bin/genimage?0013536837470156531DA9A12DF1884572F821C14FFC1851306DED782F03F446CA5481ABAABD8BE5CADA4C9BE2B70A86DACA7128892E38900E046467FAAEC3905542F08C742335F85C64C1ECF91993D36D13381909378C3CC033B299C271C223434F744934D2EEBE03B89F5CD74341AD86454011F9197801B27579C7AA6C78C63A246682F93AB8A2BABBB6176BAB36BE987B82180BCBF688E8DA0B5A1823385F88DBC40B1B3CEBA8"
+     class="pass_reg_verifycode" id="pass_reg_img_verifycode_0" alt="验证码图片" title="验证码图片"><span
+     class="pass_reg_change_verifycode" id="pass_reg_change_verifycode_0">看不清？</span>
+   </p>
+   <iframe id="pass_reg_iframe_0" name="pass_reg_iframe_0" src="javascript:''" style="display: none;"></iframe>
+   <p class="pass_reg_p pass_reg_p_license grid-96">
+    <input type="checkbox" id="isagree" name="isagree" style="vertical-align: middle; *height: 14px" checked=""
+     tabindex="6"><span style="padding-left: 4px">我已阅读并接受<a href="/app/service_term.html" target="_blank">《汇智云用户协议》</a></span><span
+     class="pass_valid_right" style="display: none"></span>
+   </p>
+   <p class="pass_reg_p pass_reg_p_generalerror grid-96" id="pass_reg_p_generalerror_0">
+    <span class="pass_reg_generalerror" id="pass_reg_generalerror_0"></span>
+   </p>
+   <p class="pass_reg_p pass_reg_p_submit grid-96" id="pass_reg_p_submit_0">
+    <input class="pass_reg_submit" id="pass_reg_submit_0" type="button" value="注册" tabindex="7">
+   </p>
+  </form>
+ </div>
+</body>
+</html>

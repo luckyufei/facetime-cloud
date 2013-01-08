@@ -1,0 +1,5 @@
+package com.facetime.cloud.data.entity.user;
+
+public class UserEntity {
+
+}
